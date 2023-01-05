@@ -15,4 +15,4 @@ In this way, the load test executes for as long as it takes to process all of th
 
 ## Demonstration System Under Test
 
-![alt text]("AsyncLoadTest/Images/load test and system under test.png" "System under test.")
+![alt text](AsyncLoadTest/Images/load test and system under test.png "System under test.")
