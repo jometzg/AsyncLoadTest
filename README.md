@@ -24,3 +24,13 @@ In this way, the load test executes for as long as it takes to process all of th
 ## Load Test Sample Run
 
 ![alt text](AsyncLoadTest/Images/load-test-results.png "Test results.")
+
+## Function App Configuration Items needed
+
+1. ServiceBusConnection - the connection string to Azure service bus instance
+2. QueueName - service bus queue name
+3. MetricName - the name of the application insights (configured for the function app) metric
+4. outboundContainer - the name of the blob storage container in which the messages get put after pulling from the service bus queue
+5. TargetStorageAccount" - the connection string for the above storage account
+6. WaitMs - how many mS to wait in each letter of string copy (to simulate busyness)
+7. metricUpdatePattern - CRON pattern for the timed function that sets the metric value from the queue length ("*/15 * * * * *" is every 15 seconds)
