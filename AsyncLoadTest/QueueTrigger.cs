@@ -10,10 +10,12 @@ namespace AsyncLoadTest
 {
     public class QueueTrigger
     {
+        //private static string outboundContainer = Environment.GetEnvironmentVariable("BlobContainerName");
+
         [FunctionName("QueueTrigger")]
         [StorageAccount("TargetStorageAccount")]
-        public async Task Run([ServiceBusTrigger("inbound", Connection = "ServiceBusConnection")]string myQueueItem,
-            [Blob("outbound/{messageId}", FileAccess.Write)] Stream message,
+        public async Task Run([ServiceBusTrigger("%QueueName%", Connection = "ServiceBusConnection")]string myQueueItem,
+            [Blob("%outboundContainer%/{messageId}", FileAccess.Write)] Stream message,
             Int32 deliveryCount,
             DateTime enqueuedTimeUtc,
             string messageId,

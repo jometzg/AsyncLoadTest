@@ -15,8 +15,6 @@ namespace AsyncLoadTest
 {
     public static class PollQueueLength
     {
-        //private static TelemetryClient _telemetryClient = new TelemetryClient();
-
         [FunctionName("PollQueueLength")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
@@ -27,7 +25,6 @@ namespace AsyncLoadTest
             ManagementClient managementClient = new ManagementClient(Environment.GetEnvironmentVariable("ServiceBusConnection"));
             var queue = await managementClient.GetQueueRuntimeInfoAsync(Environment.GetEnvironmentVariable("QueueName"));
             var messageCount = queue.MessageCount;
-            //_telemetryClient.TrackMetric(Environment.GetEnvironmentVariable("MetricName"), messageCount);
 
             return new OkObjectResult(messageCount);
         }

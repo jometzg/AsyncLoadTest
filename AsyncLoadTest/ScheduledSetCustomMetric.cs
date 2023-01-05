@@ -11,16 +11,19 @@ namespace AsyncLoadTest
     public class ScheduledSetCustomMetric
     {
         private static TelemetryClient _telemetryClient = new TelemetryClient();
+        private static string queueName = Environment.GetEnvironmentVariable("QueueName");
+        private static string sbConnection = Environment.GetEnvironmentVariable("ServiceBusConnection");
+        private static string metricName = Environment.GetEnvironmentVariable("MetricName");
 
         [FunctionName("ScheduledSetCustomMetric")]
-        public async Task Run([TimerTrigger("* * * * * *")]TimerInfo myTimer, ILogger log) // every second. May be better every minute
+        public async Task Run([TimerTrigger("%metricUpdatePattern%")]TimerInfo myTimer, ILogger log) // see https://arminreiter.com/2017/02/azure-functions-time-trigger-cron-cheat-sheet/
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 
-            ManagementClient managementClient = new ManagementClient(Environment.GetEnvironmentVariable("ServiceBusConnection"));
-            var queue = await managementClient.GetQueueRuntimeInfoAsync(Environment.GetEnvironmentVariable("QueueName"));
+            ManagementClient managementClient = new ManagementClient(sbConnection);
+            var queue = await managementClient.GetQueueRuntimeInfoAsync(queueName);
             var messageCount = queue.MessageCount;
-            _telemetryClient.TrackMetric(Environment.GetEnvironmentVariable("MetricName"), messageCount);
+            _telemetryClient.TrackMetric(metricName, messageCount);
         }
     }
 }
