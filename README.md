@@ -16,3 +16,11 @@ In this way, the load test executes for as long as it takes to process all of th
 ## Demonstration System Under Test
 
 ![alt text](AsyncLoadTest/Images/load-test-and-system-under-test.png "System under test.")
+
+## Custom metric
+
+![alt text](AsyncLoadTest/Images/backlogcount-metric.png "Custom metric.")
+
+## Load Test Sample Run
+
+![alt text](AsyncLoadTest/Images/load-test-results.png "Test results.")
