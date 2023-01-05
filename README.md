@@ -11,7 +11,7 @@ In this way, the load test executes for as long as it takes to process all of th
 
 ## Load Test Structure
 
-![alt text]("AsyncLoadTest/Images/load-test-in-jmeter.png" "Load test structure.")
+![alt text](AsyncLoadTest/Images/load-test-in-jmeter.png "Load test structure.")
 
 ## Demonstration System Under Test
 
