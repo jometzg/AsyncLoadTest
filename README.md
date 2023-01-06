@@ -34,3 +34,5 @@ In this way, the load test executes for as long as it takes to process all of th
 5. TargetStorageAccount" - the connection string for the above storage account
 6. WaitMs - how many mS to wait in each letter of string copy (to simulate busyness)
 7. metricUpdatePattern - CRON pattern for the timed function that sets the metric value from the queue length ("*/15 * * * * *" is every 15 seconds)
+
+It may also be useful (for test purposes) to limit the scale out of the function as service bus is used by the function runtime to scale out to multiple instances - thus getting more work done in parallel. This is what is needed for a real workload, but for this demonstration, limiting the function to a few instances (in the scale out section) is useful to be more representative of a background processing activity.
