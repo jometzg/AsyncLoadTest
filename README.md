@@ -1,6 +1,10 @@
 # Async Load Test
 
-This repository is an Azure Load Test that tests an asynchronous service. When testing asynchronous or background processes, it is hard to know when the background processing has completed.
+Load testing is a vital step in the lifecycle of a service - for a team to *know* that their service can take the load required of it. 
+
+This is quite straightforward for web apps and APIs, but it is less clear how to effectively load test and monitor a background or asynchronous service and to know when all of the background processing has completed and also that all requests have been processed correctly.
+
+This repository is an Azure Load Test that tests and monitors an asynchronous service. This is supplied with a sample application that processes messages from a queue.
 
 In order to address this, this test:
 1. Sends a fixed number of POST requests to an API
