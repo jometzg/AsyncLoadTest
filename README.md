@@ -1,10 +1,18 @@
-# Load Testing backgroud services
+# Load Testing background services
+
+## Do I need to load test anyway?
 
 Like many developers, I have followed or attempted to follow best practices and patterns when building APIs and services. Then when it comes to deployment, I deploy my API to my favorite infrastructure on Azure and left it at that. The use of load testing tools was seen something someone else could do or something a little too specialist for me or complicated for me. But there was always this niggling feeling that what I had built may not be good enough. 
 
 Load testing is a vital step in the lifecycle of a service - for a team to *know* that their service can take the load required of it. 
 
-This is quite straightforward for web apps and APIs, but it is less clear how to effectively load test and monitor a background or asynchronous service and to know when all of the background processing has completed and also that all requests have been processed correctly.
+## Azure Load Test to the rescue
+
+With the advent of Azure Load Testing, almost all of the infrastructural challenges of building load tests have been removed. You just have to be able to write or adapt JMeter JMX files and upload them into a load test. I recommend looking at this tutorial https://learn.microsoft.com/en-us/azure/load-testing/tutorial-identify-bottlenecks-azure-portal for how to use Azure load testing against a web app.
+
+## What is special about background processes?
+
+This means it is now quite straightforward for web apps and APIs, but it is less clear how to effectively load test and monitor a background or asynchronous service and to know when all of the background processing has completed and also that all requests have been processed correctly.
 
 This repository is an Azure Load Test that tests and monitors an asynchronous service. This is supplied with a sample application that pushes messages to a queue and then later processes these messages from the queue.
 
