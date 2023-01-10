@@ -10,7 +10,7 @@ namespace AsyncLoadTest
 {
     public class ScheduledSetCustomMetric
     {
-        private static TelemetryClient _telemetryClient = new TelemetryClient();
+        //private static TelemetryClient _telemetryClient = new TelemetryClient();
         private static string queueName = Environment.GetEnvironmentVariable("QueueName");
         private static string sbConnection = Environment.GetEnvironmentVariable("ServiceBusConnection");
         private static string metricName = Environment.GetEnvironmentVariable("MetricName");
@@ -23,7 +23,8 @@ namespace AsyncLoadTest
             ManagementClient managementClient = new ManagementClient(sbConnection);
             var queue = await managementClient.GetQueueRuntimeInfoAsync(queueName);
             var messageCount = queue.MessageCount;
-            _telemetryClient.TrackMetric(metricName, messageCount);
+            log.LogMetric(metricName, messageCount);
+            //_telemetryClient.TrackMetric(metricName, messageCount);
         }
     }
 }

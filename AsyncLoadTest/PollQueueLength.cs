@@ -21,7 +21,7 @@ namespace AsyncLoadTest
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
-
+            
             ManagementClient managementClient = new ManagementClient(Environment.GetEnvironmentVariable("ServiceBusConnection"));
             var queue = await managementClient.GetQueueRuntimeInfoAsync(Environment.GetEnvironmentVariable("QueueName"));
             var messageCount = queue.MessageCount;

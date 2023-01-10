@@ -10,8 +10,6 @@ namespace AsyncLoadTest
 {
     public class QueueTrigger
     {
-        //private static string outboundContainer = Environment.GetEnvironmentVariable("BlobContainerName");
-
         [FunctionName("QueueTrigger")]
         [StorageAccount("TargetStorageAccount")]
         public async Task Run([ServiceBusTrigger("%QueueName%", Connection = "ServiceBusConnection")]string myQueueItem,
