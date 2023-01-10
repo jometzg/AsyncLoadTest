@@ -1,9 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
 using Microsoft.Azure.ServiceBus.Management;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 
 namespace AsyncLoadTest
