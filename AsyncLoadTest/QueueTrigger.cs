@@ -20,26 +20,18 @@ namespace AsyncLoadTest
             ILogger log
             )
         {
-            try
-            {
-                // do some logging
-                log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
-                log.LogInformation($"EnqueuedTimeUtc={enqueuedTimeUtc}");
-                log.LogInformation($"DeliveryCount={deliveryCount}");
-                log.LogInformation($"MessageId={messageId}");
+            // do some logging
+            log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+            log.LogInformation($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+            log.LogInformation($"DeliveryCount={deliveryCount}");
+            log.LogInformation($"MessageId={messageId}");
 
-                // copy to blob storage using messageId as name
-                await GenerateStreamFromString(myQueueItem).CopyToAsync(message);
+            // copy to blob storage using messageId as name
+            await GenerateStreamFromString(myQueueItem).CopyToAsync(message);
 
-                // burn some cycles
-                string messageCopy = PoorStringCopy(myQueueItem);
-                log.LogInformation($"Completed MessageId={messageId}");
-
-            }
-            catch (Exception e)
-            {
-                log.LogError($"Error MessageId={messageId}, error {e.ToString()}");
-            }
+            // burn some cycles to simulate work
+            string messageCopy = PoorStringCopy(myQueueItem);
+            log.LogInformation($"Completed MessageId={messageId}");
         }
 
         // generate a stream version of the body of the message
