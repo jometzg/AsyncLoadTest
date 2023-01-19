@@ -43,6 +43,10 @@ To allow the load test to get a more complete picture of the remaining items to 
 
 The load test definition JMX file is in this folder [here](LoadTestPostThenGetCount.jmx)
 
+It requires three parameters to be set in the Azure Load Test *parameters* section:
+
+![alt text](AsyncLoadTest/Images/load-test-parameters.png "Test parameters.")
+
 
 ## Demonstration System Under Test
 
