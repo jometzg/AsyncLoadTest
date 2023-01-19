@@ -44,6 +44,9 @@ To allow the load test to get a more complete picture of the remaining items to 
 The load test definition JMX file is in this folder [here](LoadTestPostThenGetCount.jmx)
 
 It requires three parameters to be set in the Azure Load Test *parameters* section:
+1. The function web app name (without https://)
+2. the number of requests to be sent
+3. The functions key needed to POST requests to the functions HTTP endpoint. This can be found in the *App Keys* section of the Azure function.
 
 ![alt text](AsyncLoadTest/Images/load-test-parameters.png "Test parameters.")
 
