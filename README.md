@@ -12,11 +12,13 @@ With the advent of Azure Load Testing, almost all of the infrastructural challen
 
 ## What is special about background processes?
 
-This means it is now quite straightforward for web apps and APIs, but it is less clear how to effectively load test and monitor a background or asynchronous service and to know when all of the background processing has completed and also that all requests have been processed correctly.
+The use of load testing means it is now quite straightforward to test web apps and APIs, but it is less clear how to effectively load test and monitor a background or asynchronous service and to know when all of the background processing has completed and also that all requests have been processed correctly.
 
-This repository is an Azure Load Test that tests and monitors an asynchronous service. This is supplied with a sample application that pushes messages to a queue and then later processes these messages from the queue.
+This repository contains an Azure Load Testing sample that tests and monitors an asynchronous service. This is supplied with a sample application against which the load test can be run. This sample application comprises some APIs which push messages to a queue and then later processes these messages from the queue.
 
-In order to address this, this test:
+## How does the load test solve these problems?
+
+This test:
 1. Sends a fixed number of POST requests to an API
 2. Uses a second phase of the load test to then poll another API to see how many items remain to be processed. Only when there are none, does the test complete.
 3. Uses a custom metric in application insights to represent this queue length.
