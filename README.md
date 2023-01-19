@@ -2,7 +2,7 @@
 
 ## Do I need to load test anyway?
 
-Like many developers, I have followed or attempted to follow best practices and patterns when building APIs and services. Then when it comes to deployment, I deploy my API to my favorite infrastructure on Azure and left it at that. The use of load testing tools was seen something someone else could do or something a little too specialist for me or complicated for me. But there was always this niggling feeling that what I had built may not be good enough. 
+Like many developers, I have followed or attempted to follow best practices and patterns when building APIs and services. Then when it comes to deployment, I deploy my API to my favorite infrastructure on Azure, picked an appropriate SKU and left it there. The use of load testing tools was seen something someone else could do or something a little too specialist for me or complicated for me. But there was always this niggling feeling that what I had built may not perform well enough. 
 
 Load testing is a vital step in the lifecycle of a service - for a team to *know* that their service can take the load required of it. 
 
