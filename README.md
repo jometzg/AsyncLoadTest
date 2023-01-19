@@ -102,3 +102,7 @@ Deployment Steps:
 7. metricUpdatePattern - CRON pattern for the timed function that sets the metric value from the queue length ("*/15 * * * * *" is every 15 seconds)
 
 It may also be useful (for test purposes) to limit the scale out of the function as service bus is used by the function runtime to scale out to multiple instances - thus getting more work done in parallel. This is what is needed for a real workload, but for this demonstration, limiting the function to a few instances (in the scale out section) is useful to be more representative of a background processing activity.
+
+# Summary
+
+With the use of a novel form of JMeter JMX file, combined with Azure Load Testing and Application Insights custom metrics alls you to load test and monitor the progress of background processes in an efficient manner.
