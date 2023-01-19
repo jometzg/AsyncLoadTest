@@ -41,6 +41,8 @@ A simpler arrangement could be to just use a single thread group and to let the 
 
 To allow the load test to get a more complete picture of the remaining items to be processed, the system under test regularly polls the remaining item count and generates a [custom metric](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/metrics-custom-overview) - this metric can then be pulled into the load test run.
 
+The load test definition JMX file is [here]()
+
 
 ## Demonstration System Under Test
 
