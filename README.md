@@ -58,6 +58,10 @@ To be clear, this is a demonstration application, but it allows you to test the 
 
 ![alt text](AsyncLoadTest/Images/backlogcount-metric.png "Custom metric.")
 
+As can be seen from above, the first phase of the test rapidly increases the number of items to be processed. Once these have been sent, the background processes start working away. It's slope is more shallow as it is taking longer to process each message than it did to create. In a production system, attempts should be made to optimise this background processing. Also Azure Functions when triggered on Service Bus queue also scale out to more instances - thus doing more work in parallel. The scale limit of the funtion app can be changed to tune this. See below:
+
+![alt text](AsyncLoadTest/Images/function-app-scaling.png "Function App Scaling.")
+
 ## Load Test Sample Run
 
 ![alt text](AsyncLoadTest/Images/load-test-results.png "Test results.")
