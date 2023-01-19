@@ -29,13 +29,16 @@ In this way, the load test executes for as long as it takes to process all of th
 
 ![alt text](AsyncLoadTest/Images/load-test-in-jmeter.png "Load test structure.")
 
-All JMeter load test use the notion of thread groups. There are blocks of requests to be sent. More standard load tests start low and ramp up to a limit and continue for a given period of time. The thread groups in this test are essentially while loops and can send a fixed number of requests. This is useful for validation that the system uner test has processed all messages.
+All JMeter load test use the notion of thread groups. There are blocks of requests to be sent. More standard load tests start low and ramp up to a limit and continue for a given period of time. The thread groups in this test are *while loops* and can send a fixed number of requests or can keep sending requests until a condition is met. This is useful as the use of these while loops can firstly send a fixed number of requests and secondly run the test until the background *queue* of requests is empty.
 
 This load test has 2 thread groups:
 1. the one that generates the API post calls. This one is designed to send a fixed number of HTTP POST requests. The number is parameterised and can be injected into the test at runtime. This thread group is the minimum needed.
-2. The second thread group is designed to essentially poll the state of the number of pending items to complete and in the test application, queries the service bus queue length - but it's HTTP GET request could query something else, such as a database. This thread group is designed to run after the first thread group (this is not the default JMeter behaviour) and is designed to allow the test to keep running until all requests are processed. That way, the length of the test is the total time to process all messages.
+2. The second thread group is designed to poll the state of the number of pending items to complete and in the test application, queries the service bus queue length - but it's HTTP GET request could query something else, such as a database. This thread group is designed to run after the first thread group (this is not the default JMeter behaviour) and is designed to allow the test to keep running until all requests are processed. That way, the length of the test is the total time to process all messages.
 
 A simpler arrangement could be to just use a single thread group and to let the test complete once all requests are sent. But you would then have to separately look at the metrics of the system under test to establish when the service has completely finished processing. But, the 2 thread groups give a more complete picture.
+
+To allow the load test to get a more complete picture of the remaining items to be processed, the system under test regularly polls the remaining item count and generates a [custom metric](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/metrics-custom-overview) - this metric can then be pulled into the load test run.
+
 
 ## Demonstration System Under Test
 
