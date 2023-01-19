@@ -8,7 +8,7 @@ Load testing is a vital step in the lifecycle of a service - for a team to *know
 
 ## Azure Load Test to the rescue
 
-With the advent of Azure Load Testing, almost all of the infrastructural challenges of building load tests have been removed. You just have to be able to write or adapt JMeter JMX files and upload them into a load test. I recommend looking at this tutorial https://learn.microsoft.com/en-us/azure/load-testing/tutorial-identify-bottlenecks-azure-portal for how to use Azure load testing against a web app.
+With the advent of Azure Load Testing, almost all of the infrastructural challenges of building load tests have been removed. You just have to be able to write or adapt JMeter JMX files and upload them into a load test. I recommend looking at this [tutorial](https://learn.microsoft.com/en-us/azure/load-testing/tutorial-identify-bottlenecks-azure-portal) for how to use Azure load testing against a web app.
 
 ## What is special about background processes?
 
