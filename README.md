@@ -105,4 +105,4 @@ It may also be useful (for test purposes) to limit the scale out of the function
 
 # Summary
 
-With the use of a novel form of JMeter JMX file, combined with Azure Load Testing and Application Insights custom metrics alls you to load test and monitor the progress of background processes in an efficient manner.
+With the use of a novel form of JMeter JMX file, combined with Azure Load Testing and Application Insights custom metrics allows the load testing and progress monitoring of background processes in an efficient manner. The reports then generated in Azure Load Testing give a view of the progress of the background process.
