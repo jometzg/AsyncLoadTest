@@ -78,7 +78,7 @@ So far there is not a deployment script, but this needs:
 
 1. A function application
 2. Service bus namespace and queue
-3. Application Insights
+3. Application Insights (this may be created at the functions app deployment, but it does need to be associated with the function app)
 4. Storage account
 5. Load Testing instance
 
