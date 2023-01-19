@@ -66,6 +66,31 @@ As can be seen from above, the first phase of the test rapidly increases the num
 
 ![alt text](AsyncLoadTest/Images/load-test-results.png "Test results.")
 
+As can be seen above, this is the report from the load test:
+1. The load test total time is the time it takes to consume and process all of the background messages
+2. The total number of requests is a combination of the fixed POST requests to create the messages plus the polling to wait for the test to complete.
+3. The custom metric is shown in the repot and shows the burndown of message processing
+
+
+## Deploying the sample application
+
+So far there is not a deployment script, but this needs:
+
+1. A function application
+2. Service bus namespace and queue
+3. Application Insights
+4. Storage account
+5. Load Testing instance
+
+Deployment Steps:
+1. Deploy the infrastructure above
+2. Git clone the application and build in Visual Studio
+3. Using the deployment profile publish the application (functions) to the Azure function app
+4. Set all of the configuration items for the function. See next section
+5. Create the load test, using the JMX file provides
+6. Set the load test parameters
+
+
 ## Function App Configuration Items needed
 
 1. ServiceBusConnection - the connection string to Azure service bus instance
