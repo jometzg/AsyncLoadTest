@@ -45,10 +45,10 @@ To allow the load test to get a more complete picture of the remaining items to 
 ![alt text](AsyncLoadTest/Images/load-test-and-system-under-test.png "System under test.")
 
 The system under test comprises 4 Azure functions:
-1. An HTTP triggered function (web API) that takes a message from the HTTP body (POST) and then pushes this into a service bus queue. This is essentially the function that generates the messages and therefore load.
-2. A service bus queue triggered function that does some processing on the message received and then copies this to Azure blob storage. The count of the number of blobs in storage can then later be compared to the original number of messages sent.
-3. An HTTP triggered function (web API) that returns a count of the number of messages in the service bus queue. This API is used by the second phase of the load test to essentially poll looking to see the number of items in the queue. The load test looks for 0 items to complete the load test.
-4. A timer triggered function that continuously checks the number of items in the service bus queue (every 15 seconds by default). Then it sets this as a value in an Application Insights custom metric. This continuously triggered function is responsible for providing the metric that the load test can pull from application insights to give the "burn-down chart" for the test.
+1. An HTTP triggered function (web API) that takes a message from the HTTP body (POST) and then pushes this into a service bus queue. This is the load generator for background processing.
+2. A service bus queue triggered function that does some processing on the message received and then copies this to Azure blob storage. This is a message processor and the one supplied has been designed to be slow to simulate a some complex background processing. As a side effect, the count of the messages in the blob storage may also be used to verify processing completeness.
+3. An HTTP triggered function (web API) that returns a count of the number of messages in the service bus queue. This API is used by the second phase of the load test to poll the number of items in the service bus queue. The load test looks for zero items to complete the execution of the load test.
+4. A timer triggered function that continuously checks the number of items in the service bus queue (every 15 seconds by default). It then sets this as a value in an Application Insights custom metric. This continuously triggered function is responsible for providing the metric that the load test can pull from application insights to give the "burn-down chart" for the test.
 
 All of the above functions are built into a single function app for a single deployment. These have a number of application settings that are discussed in a later setting. 
 
