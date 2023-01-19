@@ -29,7 +29,9 @@ In this way, the load test executes for as long as it takes to process all of th
 
 ![alt text](AsyncLoadTest/Images/load-test-in-jmeter.png "Load test structure.")
 
-All JMeter load test use the notion of thread groups. There are blocks of requests to be sent. More standard load tests start low and ramp up to a limit and continue for a given period of time. The thread groups in this test are *while loops* and can send a fixed number of requests or can keep sending requests until a condition is met. This is useful as the use of these while loops can firstly send a fixed number of requests and secondly run the test until the background *queue* of requests is empty.
+All JMeter load tests use the notion of *thread groups*. These are blocks of HTTP requests to be sent. Standard load tests start with a low number of *threads* and ramp up to a fixed number and continue for a given period of time. This style of thread group will send many requests to the target and this will vary depending on how fast the target can keep up with the number of requests.
+
+The thread groups in this test are *while loops* and can send a fixed number of requests or can keep sending requests until a condition is met. This is useful as the use of these while loops can firstly send a fixed number of requests and secondly run the test until the background *queue* of requests is empty.
 
 This load test has 2 thread groups:
 1. the one that generates the API post calls. This one is designed to send a fixed number of HTTP POST requests. The number is parameterised and can be injected into the test at runtime. This thread group is the minimum needed.
